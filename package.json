@@ -1,0 +1,29 @@
+{
+  "name": "distance-metrics",
+  "version": "1.0.0",
+  "description": "A collection of utilities to calculate various distance metrics in pure javascript.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanwillis/distance-metrics.git"
+  },
+  "keywords": [
+    "distance",
+    "metrics",
+    "distance",
+    "distance-metric"
+  ],
+  "author": "Ethan Willis",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ethanwillis/distance-metrics/issues"
+  },
+  "homepage": "https://github.com/ethanwillis/distance-metrics#readme",
+  "devDependencies": {
+    "typescript": "^3.7.4"
+  }
+}
