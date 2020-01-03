@@ -1,12 +1,38 @@
-import { sum } from './utils';
+/**
+  This interface can represent points in n-Dimensions
 
-interface Point {
-  x: number;
-  y: number;
+  Examples:
+  1-Dimension
+  const OneDimensionalPoint = {coordinates: [1]} // 1 on the number line.
+
+  2-Dimensions
+  const TwoDimensionalPOint = {coordinates: [2, 3]} // Would be (x, y) = (2, 3) on a Plane.
+
+  ... etc.
+*/
+interface NDimensionalPoint {
+  coordinates: [number]
 }
 
-const euclideanDistance = (p1:Point[], p2:Point[]) => {
-  return sum(p1[0].x, p2[0].x);
+const euclideanDistance = (point1:NDimensionalPoint, point2:NDimensionalPoint):number => {
+  // Every pair of points must have the same dimensions.
+  /**
+    TODO: Technically you could find the distance between say
+    a 1-dimensional point and 2-dimensional point by imputing
+    the missing dimensions as 0.
+    For now, and ease of implementation, we will put this burden
+    on the users to fill in the missing dimensions with 0s.
+  */
+  if(point1.coordinates.length !== point2.coordinates.length) {
+    throw "Both points must have the same dimension. If you are attempting to find the distance between points of different dimensions you must set the missing dimensions on whichever point is missing them to 0."
+  }
+
+  let sum = 0
+  for(let i = 0; i < point1.coordinates.length; i++) {
+    sum += (point1.coordinates[i] - point2.coordinates[i]) ** 2
+  }
+
+  return sum ** 1/2
 }
 
 export { euclideanDistance }
