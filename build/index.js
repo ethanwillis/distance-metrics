@@ -29,6 +29,9 @@ var euclideanDistance = function (vector1, vector2) {
     for (var i = 0; i < vector1.coordinates.length; i++) {
         sum += Math.pow((vector1.coordinates[i] - vector2.coordinates[i]), 2);
     }
-    return Math.pow(sum, 1) / 2;
+    return Math.pow(sum, (1 / 2));
 };
 exports.euclideanDistance = euclideanDistance;
+var vector1 = { coordinates: [-7, -4] };
+var vector2 = { coordinates: [17, 6.5] };
+console.log(euclideanDistance(vector1, vector2));

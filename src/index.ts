@@ -11,7 +11,7 @@
   ... etc.
 */
 interface NDimensionalVector {
-  coordinates: [number]
+  coordinates: number[]
 }
 
 const preconditions = {
@@ -48,7 +48,7 @@ const euclideanDistance = (vector1:NDimensionalVector, vector2:NDimensionalVecto
     sum += (vector1.coordinates[i] - vector2.coordinates[i]) ** 2
   }
 
-  return sum ** 1/2
+  return sum ** (1/2)
 };
 
 export { euclideanDistance, manhanttanDistance }
