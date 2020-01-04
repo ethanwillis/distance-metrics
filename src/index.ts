@@ -153,4 +153,12 @@ const matchDistance = (vector1:NDimensionalVector, vector2:NDimensionalVector):n
 }
 
 
-export { hellingerDistance, manhattanDistance, euclideanDistance, fractionalDistance, minkowskiDistance, chebyshevDistance, matchDistance }
+export {
+  hellingerDistance,
+  manhattanDistance,
+  euclideanDistance,
+  fractionalDistance,
+  minkowskiDistance,
+  chebyshevDistance,
+  matchDistance
+}
