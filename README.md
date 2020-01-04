@@ -25,7 +25,7 @@ All currently implemented distance metrics use parameters that are just arrays.
 
 ```euclideanDistance(vector1, vector2)```
 
-```manhanttanDistance(vector1, vector2)```
+```manhattanDistance(vector1, vector2)```
 
 ## Dev Quickstart
 
