@@ -45,7 +45,7 @@ If you are only using function calls to minkowskiDistance(...) that are equivale
 
 ```manhattanDistance(vector1, vector2)``` is equivalent to ```minkowskiDistance(vector1, vector2, 1)```
 ```euclideanDistance(vector1, vector2)``` is equivalent to ```minkowskiDistance(vector1, vector2, 2)```
-```fractionalDistance(vector1, vector2, <any exponent < 1>)``` is equivalent to ```minkowskiDistance(vector1, vector2, <any exponent < 1)```
+```fractionalDistance(vector1, vector2, <any exponent less than 1>)``` is equivalent to ```minkowskiDistance(vector1, vector2, <any exponent less than 1>)```
 
 ## Dev Quickstart
 
