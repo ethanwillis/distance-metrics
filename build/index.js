@@ -23,9 +23,28 @@ var preconditions = {
                 throw "One of the supplied vectors does not meet the minimum dimensional length of " + minimumDimensionLength;
             }
         });
+    },
+    numberGreaterThan: function (value, lowerBound) {
+        if (value <= lowerBound) {
+            throw value + " <= " + lowerBound + ", Value(" + value + ") must be stricly greater than lowerBound(" + lowerBound + ")";
+        }
+    },
+    numberLessThan: function (value, upperBound) {
+        if (value >= upperBound) {
+            throw value + " >= " + upperBound + ", Value(" + value + ") must be stricly less than upperBound(" + upperBound + ")";
+        }
     }
 };
-var manhanttanDistance = function (vector1, vector2) {
+var hellingerDistance = function (vector1, vector2) {
+    preconditions.sameDimensions(vector1, vector2);
+    var sum = 0;
+    for (var i = 0; i < vector1.length; i++) {
+        sum += vector1[i] === vector2[i] ? 1 : 0;
+    }
+    return sum;
+};
+exports.hellingerDistance = hellingerDistance;
+var manhattanDistance = function (vector1, vector2) {
     preconditions.sameDimensions(vector1, vector2);
     var sum = 0;
     for (var i = 0; i < vector1.length; i++) {
@@ -33,16 +52,56 @@ var manhanttanDistance = function (vector1, vector2) {
     }
     return sum;
 };
-exports.manhanttanDistance = manhanttanDistance;
+exports.manhattanDistance = manhattanDistance;
 var euclideanDistance = function (vector1, vector2) {
     preconditions.sameDimensions(vector1, vector2);
     var sum = 0;
     for (var i = 0; i < vector1.length; i++) {
         sum += Math.pow((vector1[i] - vector2[i]), 2);
     }
-    return Math.pow(sum, (1 / 2));
+    return Math.pow(sum, 1 / 2);
 };
 exports.euclideanDistance = euclideanDistance;
+var fractionalDistance = function (vector1, vector2, exponent) {
+    preconditions.sameDimensions(vector1, vector2);
+    preconditions.numberGreaterThan(exponent, 0);
+    preconditions.numberLessThan(exponent, 1);
+    var sum = 0;
+    for (var i = 0; i < vector1.length; i++) {
+        sum += Math.pow(Math.abs(vector1[i] - vector2[i]), exponent);
+    }
+    return sum;
+};
+exports.fractionalDistance = fractionalDistance;
+var minkowskiDistance = function (vector1, vector2, exponent) {
+    if (exponent < 1) {
+        return fractionalDistance(vector1, vector2, exponent);
+    }
+    else if (exponent == 1) {
+        return manhattanDistance(vector1, vector2);
+    }
+    else if (exponent == 2) {
+        return euclideanDistance(vector1, vector2);
+    }
+    else {
+        preconditions.numberGreaterThan(exponent, 0);
+        preconditions.sameDimensions(vector1, vector2);
+        var sum = 0;
+        // If our exponent is even we don't need to calculate absolute value.
+        if (exponent % 2 == 0) {
+            for (var i = 0; i < vector1.length; i++) {
+                sum += Math.pow(vector1[i] - vector2[i], exponent);
+            }
+        }
+        else {
+            for (var i = 0; i < vector1.length; i++) {
+                sum += Math.pow(Math.abs(vector1[i] - vector2[i]), exponent);
+            }
+        }
+        return Math.pow(sum, exponent);
+    }
+};
+exports.minkowskiDistance = minkowskiDistance;
 var chebyshevDistance = function (vector1, vector2) {
     preconditions.sameDimensions(vector1, vector2);
     preconditions.dimensionLengthGreaterThan(0, vector1, vector2);
