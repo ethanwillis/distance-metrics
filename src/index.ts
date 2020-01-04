@@ -1,5 +1,5 @@
 /**
-  This interface can represent vectors in n-Dimensions
+  This type can represent vectors in n-Dimensions
 
   Examples:
   1-Dimension
@@ -10,9 +10,7 @@
 
   ... etc.
 */
-interface NDimensionalVector {
-  coordinates: number[]
-}
+type NDimensionalVector = number[]
 
 const preconditions = {
   sameDimensions: (vector1:NDimensionalVector, vector2:NDimensionalVector):void => {
@@ -23,7 +21,7 @@ const preconditions = {
       For now, and ease of implementation, we will put this burden
       on the users to fill in the missing dimensions with 0s.
     */
-    if(vector1.coordinates.length !== vector2.coordinates.length) {
+    if(vector1.length !== vector2.length) {
       throw "Both vectors must have the same dimension. If you are attempting to find the distance between vectors of different dimensions you must set the missing dimensions on whichever vector is missing them to 0."
     }
   }
@@ -33,8 +31,8 @@ const manhanttanDistance = (vector1:NDimensionalVector, vector2:NDimensionalVect
   preconditions.sameDimensions(vector1, vector2);
 
   let sum = 0
-  for(let i = 0; i < vector1.coordinates.length; i++) {
-    sum += Math.abs( vector1.coordinates[i] - vector2.coordinates[i] )
+  for(let i = 0; i < vector1.length; i++) {
+    sum += Math.abs( vector1[i] - vector2[i] )
   }
 
   return sum;
@@ -44,8 +42,8 @@ const euclideanDistance = (vector1:NDimensionalVector, vector2:NDimensionalVecto
   preconditions.sameDimensions(vector1, vector2);
 
   let sum = 0
-  for(let i = 0; i < vector1.coordinates.length; i++) {
-    sum += (vector1.coordinates[i] - vector2.coordinates[i]) ** 2
+  for(let i = 0; i < vector1.length; i++) {
+    sum += (vector1[i] - vector2[i]) ** 2
   }
 
   return sum ** (1/2)
