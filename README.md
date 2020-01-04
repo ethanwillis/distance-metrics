@@ -23,9 +23,29 @@ console.log( euclideanDistance(vector1, vector2) )
 ## Distance Metrics
 All currently implemented distance metrics use parameters that are just arrays.
 
+### Minkowski Family
 ```euclideanDistance(vector1, vector2)```
 
 ```manhattanDistance(vector1, vector2)```
+
+```fractionalDistance(vector1, vector2, exponent)```
+
+```minkowskiDistance(vector1, vector2, exponent)```
+
+#### Note:
+The manhattan, euclidean, and fractional distance functions are all special cases of the minkowskiDistance function.
+If you are only using function calls to minkowskiDistance(...) that are equivalent your code will be slightly faster if you call the underlying special cases directly.
+
+```manhattanDistance(vector1, vector2)``` is equivalent to ```minkowskiDistance(vector1, vector2, 1)```
+```euclideanDistance(vector1, vector2)``` is equivalent to ```minkowskiDistance(vector1, vector2, 2)```
+```fractionalDistance(vector1, vector2, <any exponent < 1>)``` is equivalent to ```minkowskiDistance(vector1, vector2, <any exponent < 1)```
+
+### Other Distance Functions
+```hellingerDistance(vector1, vector2)```
+
+```chebyshevDistance(vector1, vector2)```
+
+```matchDistance(vector1, vector2)```
 
 ## Dev Quickstart
 
