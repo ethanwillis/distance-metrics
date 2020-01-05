@@ -5,7 +5,12 @@
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc"
+    "compile:tsc": "tsc",
+    "compile:native": "neon build",
+    "compile": "npm run compile:native && npm run compile:tsc",
+    "release:patch": "npm run compile && npm version patch && npm publish",
+    "release:minor": "npm run compile && npm version minor && npm publish",
+    "release:major": "npm run compile && npm version major && npm publish"
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,9 @@
     "url": "https://github.com/ethanwillis/distance-metrics/issues"
   },
   "homepage": "https://github.com/ethanwillis/distance-metrics#readme",
+  "dependencies": {
+    "neon-cli": "^0.3.3"
+  },
   "devDependencies": {
     "typescript": "^3.7.4"
   }

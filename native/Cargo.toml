@@ -1,0 +1,17 @@
+[package]
+name = "distance-metrics-native"
+version = "0.1.0"
+authors = ["Ethan Willis <elwillis1@gmail.com>"]
+license = "AGPL-3.0"
+build = "build.rs"
+exclude = ["artifacts.json", "index.node"]
+
+[lib]
+name = "distance_metrics_native"
+crate-type = ["cdylib"]
+
+[build-dependencies]
+neon-build = "0.3.3"
+
+[dependencies]
+neon = "0.3.3"
