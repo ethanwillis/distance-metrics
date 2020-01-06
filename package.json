@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile:tsc": "tsc",
-    "compile:native": "neon build",
+    "compile:native": "neon clean && neon build --release",
     "compile": "npm run compile:native && npm run compile:tsc",
     "release:patch": "npm run compile && npm version patch && npm publish",
     "release:minor": "npm run compile && npm version minor && npm publish",
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/ethanwillis/distance-metrics#readme",
   "dependencies": {
+    "@types/node": "^13.1.4",
     "neon-cli": "^0.3.3"
   },
   "devDependencies": {

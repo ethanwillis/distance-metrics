@@ -1,3 +1,5 @@
+import { manhattanDistanceNative } from '../native'
+
 /**
   This type can represent vectors in n-Dimensions
 
@@ -152,7 +154,6 @@ const matchDistance = (vector1:NDimensionalVector, vector2:NDimensionalVector):n
   return sum;
 }
 
-
 export {
   hellingerDistance,
   manhattanDistance,
@@ -160,5 +161,6 @@ export {
   fractionalDistance,
   minkowskiDistance,
   chebyshevDistance,
-  matchDistance
+  matchDistance,
+  manhattanDistanceNative
 }
