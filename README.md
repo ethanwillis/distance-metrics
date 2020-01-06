@@ -20,7 +20,7 @@ console.log( euclideanDistance(vector1, vector2) )
 26.196373794859472
 ```
 
-## Distance Metrics
+## Distance Metrics Functions
 All currently implemented distance metrics use parameters that are just arrays.
 
 ### Minkowski Family
@@ -38,6 +38,11 @@ All currently implemented distance metrics use parameters that are just arrays.
 ```chebyshevDistance(vector1, vector2)```
 
 ```matchDistance(vector1, vector2)```
+
+## Native Distance Metrics Functions
+I've started some experimental work where I'm going to implement native versions of the javascript functions.
+Currently I have implemented the following functions in Rust.
+```manhattanDistanceNative(vector1, vector2)```
 
 ### Notes:
 The manhattan, euclidean, and fractional distance functions are all special cases of the minkowskiDistance function.

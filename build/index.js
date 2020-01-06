@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var native_1 = require("../native");
-exports.threadCount = native_1.threadCount;
+exports.manhattanDistanceNative = native_1.manhattanDistanceNative;
 var preconditions = {
     sameDimensions: function (vector1, vector2) {
         /**
@@ -126,4 +126,3 @@ var matchDistance = function (vector1, vector2) {
     return sum;
 };
 exports.matchDistance = matchDistance;
-console.log(native_1.threadCount());
